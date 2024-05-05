@@ -21,8 +21,5 @@ public class Nomor8 {
   public static void main(String[] args) {
     One one = new Two();
     one.print(10);
-
-    int print_paper = 10;
-    System.out.println(print_paper);
   }
 }
