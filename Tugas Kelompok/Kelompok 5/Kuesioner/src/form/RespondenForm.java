@@ -21,18 +21,23 @@ public class RespondenForm extends Form {
 
   @Override
   public boolean validate() {
-    if (responden.getNama().length() > 30) {
-      super.addErrorMessages("Invalid name: more than 30 characters.");
+    try {
+      if (responden.getNama().length() > 30) {
+        super.addErrorMessages("Invalid name: more than 30 characters.");
+      }
+      if (!responden.getNo_hp().matches("^08[0-9]{9,}$")) {
+        super.addErrorMessages("Invalid number phone.");
+      }
+    } catch (Exception e) {
+      super.addErrorMessages("Isian harus diisi semua.");
     }
-    if (!responden.getNo_hp().matches("^08[0-9]{9,}$")) {
-      super.addErrorMessages("Invalid number phone.");
-    }
+
     return super.getErrorMessages().isEmpty();
   }
 
   @Override
   public boolean save() {
-    System.out.println("Save here...");
+    System.out.println("  >> Save here...");
     return true;
   }
 

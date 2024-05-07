@@ -30,9 +30,9 @@ public class App {
     keteranganTempat.setIdKabkota(27);
     keteranganTempat.setIdKecamatan(12);
     keteranganTempat.setIdDesa(2004);
-    keteranganTempat.setNoBs(01);
-    keteranganTempat.setNoSubBs(02);
-    keteranganTempat.setNoUsaha(00023);
+    keteranganTempat.setNoBs(1000);
+    keteranganTempat.setNoSubBs(200);
+    keteranganTempat.setNoUsaha(4354);
     keteranganTempat.setNamaUsaha("Pabrik Olahan IT");
     keteranganTempat.setAlamatUsaha("Jalan Angkasa");
     keteranganTempatForm.setTempat(keteranganTempat);
@@ -50,6 +50,9 @@ public class App {
       System.out.println(">> " + e.getMessage());
     }
 
+    System.err.println(
+      "\n========================================================"
+    );
     System.out.println(
       "---- BLOK II. KETERANGAN PEMBERI JAWABAN DAN PETUGAS ---"
     );
@@ -112,6 +115,10 @@ public class App {
     } catch (IllegalArgumentException e) {
       System.out.println(">> " + e.getMessage());
     }
+
+    System.err.println(
+      "\n========================================================"
+    );
 
     System.out.println("---- BLOK III. KETERANGAN USAHA ECOMMERCE ---");
     KeteranganUsahaECommerceForm keteranganUsahaECommerceForm = new KeteranganUsahaECommerceForm();

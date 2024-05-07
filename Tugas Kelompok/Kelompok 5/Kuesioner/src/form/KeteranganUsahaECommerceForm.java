@@ -116,207 +116,287 @@ public class KeteranganUsahaECommerceForm extends Form {
   }
 
   public void validatePenanggungJawabUsaha() {
-    if (penanggungJawabUsaha.getNama().length() > 30) {
-      super.addErrorMessages("Invalid name: more than 30 characters.");
-    }
-    if (String.valueOf(penanggungJawabUsaha.getUmur()).length() > 2) {
-      super.addErrorMessages("Invalid umur: more than 3 digits.");
-    }
-    if (
-      !(penanggungJawabUsaha.getJk() == 0 || penanggungJawabUsaha.getJk() == 1)
-    ) {
-      super.addErrorMessages(
-        "Invalid jenis kelamin: hanya bisa input 0 atau 1."
-      );
-    }
+    try {
+      if (penanggungJawabUsaha.getNama().length() > 30) {
+        super.addErrorMessages(
+          "Invalid nama: tidak boleh lebih dari 30 karakter."
+        );
+      }
+      if (penanggungJawabUsaha.getUmur() < 0) {
+        super.addErrorMessages("Invalid umur: umur tidak boleh kurang dari 0");
+      }
+      if (String.valueOf(penanggungJawabUsaha.getUmur()).length() > 2) {
+        super.addErrorMessages("Invalid umur: lebih dari 2 digit.");
+      }
+      if (
+        !(
+          penanggungJawabUsaha.getJk() == 0 || penanggungJawabUsaha.getJk() == 1
+        )
+      ) {
+        super.addErrorMessages(
+          "Invalid jenis kelamin: hanya bisa input 0 atau 1."
+        );
+      }
 
-    if (
-      !(penanggungJawabUsaha.getJk() >= 0 && penanggungJawabUsaha.getJk() <= 3)
-    ) {
-      super.addErrorMessages(
-        "Invalid pendidikan tertinggi: hanya bisa input 0 - 3."
-      );
+      if (
+        !(
+          penanggungJawabUsaha.getJk() >= 0 && penanggungJawabUsaha.getJk() <= 3
+        )
+      ) {
+        super.addErrorMessages(
+          "Invalid pendidikan tertinggi: hanya bisa input 0 - 3."
+        );
+      }
+
+      if (
+        !(
+          penanggungJawabUsaha.getPendidikanTertinggi() >= 0 &&
+          penanggungJawabUsaha.getPendidikanTertinggi() <= 3
+        )
+      ) {
+        super.addErrorMessages(
+          "Invalid pendidikan tertinggi: hanya bisa input 0 - 3."
+        );
+      }
+    } catch (Exception e) {
+      System.out.println(">> Isian harus diisi semua.");
     }
   }
 
   public void validateKegiatanUtamaUsaha() {
-    Character kodeKategori[] = {
-      'A',
-      'C',
-      'G',
-      'H',
-      'I',
-      'J',
-      'M',
-      'N',
-      'P',
-      'Q',
-      'R',
-      'S',
-    };
-    boolean checkKodeKategori = false;
-    for (Character kd : kodeKategori) {
-      if (kegiatanUtamaUsaha.getKodeKategori() == kd) {
-        checkKodeKategori = true;
-        break;
+    try {
+      Character kodeKategori[] = {
+        'A',
+        'C',
+        'G',
+        'H',
+        'I',
+        'J',
+        'M',
+        'N',
+        'P',
+        'Q',
+        'R',
+        'S',
+      };
+      boolean checkKodeKategori = false;
+      for (Character kd : kodeKategori) {
+        if (kegiatanUtamaUsaha.getKodeKategori() == kd) {
+          checkKodeKategori = true;
+          break;
+        }
       }
-    }
-    if (!checkKodeKategori) {
-      super.addErrorMessages("Invalid kode kategori usaha.");
-    }
+      if (!checkKodeKategori) {
+        super.addErrorMessages("Invalid kode kategori usaha.");
+      }
 
-    if (String.valueOf(kegiatanUtamaUsaha.getKbli()).length() != 2) {
-      super.addErrorMessages("Kode KBLI harus berisi 2 digit.");
+      if (kegiatanUtamaUsaha.getKbli() < 0) {
+        super.addErrorMessages("Invalid kode KBLI: tidak boleh negatif.");
+      }
+
+      if (String.valueOf(kegiatanUtamaUsaha.getKbli()).length() != 2) {
+        super.addErrorMessages("Kode KBLI harus berisi 2 digit.");
+      }
+    } catch (Exception e) {
+      System.out.println(">> Isian harus diisi semua.");
     }
   }
 
   public void validateJumlahTenagaKerja() {
-    if (jumlahTenagaKerja.getTotalPemilik() < 1) {
-      super.addErrorMessages("Jumlah tenaga kerja minimal 1 (pemilik)");
+    try {
+      if (
+        jumlahTenagaKerja.getPemilikLaki() < 0 ||
+        jumlahTenagaKerja.getPemilikPr() < 0 ||
+        jumlahTenagaKerja.getTkDibayarLaki() < 0 ||
+        jumlahTenagaKerja.getTkDibayarPr() < 0 ||
+        jumlahTenagaKerja.getTkTidakDibayarLaki() < 0 ||
+        jumlahTenagaKerja.getTkTidakDibayarPr() < 0
+      ) {
+        super.addErrorMessages("Isian tidak boleh < 0.");
+      }
+      if (jumlahTenagaKerja.getTotalPemilik() < 1) {
+        super.addErrorMessages("Jumlah tenaga kerja minimal 1 (pemilik)");
+      }
+    } catch (Exception e) {
+      System.out.println(">> Isian harus diisi semua.");
     }
   }
 
   public void validateOperasiKomersil() {
-    if (
-      !(
-        operasiKomersil.getUsahaMulaiOperasi() > 1900 &&
-        operasiKomersil.getUsahaMulaiOperasi() < 2025
-      )
-    ) {
-      super.addErrorMessages("Invalid tahun mulai usaha komersil.");
+    try {
+      if (operasiKomersil.getUsahaMulaiOperasi() == null) {
+        super.addErrorMessages("Isian harus diisi semua.");
+      }
+      if (
+        !(
+          operasiKomersil.getUsahaMulaiOperasi() > 1900 &&
+          operasiKomersil.getUsahaMulaiOperasi() < 2025
+        )
+      ) {
+        super.addErrorMessages("Invalid tahun mulai usaha komersil.");
+      }
+    } catch (Exception e) {
+      System.out.println(">> Isian harus diisi semua.");
     }
   }
 
   public void validateMulaiPenjualanOnline() {
-    if (
-      !(
-        mulaiPenjualanOnline.getTahunMulaiPenjualanOnline() > 1900 &&
-        mulaiPenjualanOnline.getTahunMulaiPenjualanOnline() < 2025
-      )
-    ) {
-      super.addErrorMessages("Invalid tahun mulai penjualan online.");
+    try {
+      if (mulaiPenjualanOnline.getTahunMulaiPenjualanOnline() == null) {
+        super.addErrorMessages("Isian harus diisi semua.");
+      }
+      if (
+        !(
+          mulaiPenjualanOnline.getTahunMulaiPenjualanOnline() > 1900 &&
+          mulaiPenjualanOnline.getTahunMulaiPenjualanOnline() < 2025
+        )
+      ) {
+        super.addErrorMessages("Invalid tahun mulai penjualan online.");
+      }
+    } catch (Exception e) {
+      System.out.println(">> Isian harus diisi semua.");
     }
   }
 
   public void validateMemilikiLaporanKeuangan() {
-    if (
-      !(
-        memilikiLaporanKeuangan.getMemilikiLaporanKeuangan() == 1 ||
-        memilikiLaporanKeuangan.getMemilikiLaporanKeuangan() == 2
-      )
-    ) {
-      super.addErrorMessages("Invalid memiliki laporan keuangan");
+    try {
+      if (
+        !(
+          memilikiLaporanKeuangan.getMemilikiLaporanKeuangan() == 1 ||
+          memilikiLaporanKeuangan.getMemilikiLaporanKeuangan() == 2
+        )
+      ) {
+        super.addErrorMessages("Invalid memiliki laporan keuangan");
+      }
+    } catch (Exception e) {
+      System.out.println(">> Isian harus diisi semua.");
     }
   }
 
   public void validateMediaUsahaPenjualan() {
-    if (
-      !(
-        mediaUsahaPenjualanOnline.getWebsite() == 0 ||
-        mediaUsahaPenjualanOnline.getWebsite() == 1
-      )
-    ) {
-      super.addErrorMessages("Invalid website.");
-    }
-    if (
-      mediaUsahaPenjualanOnline.getWebsite() == 1 &&
-      mediaUsahaPenjualanOnline.getNamaWebsite() == null
-    ) {
-      super.addErrorMessages("Invalid nama website.");
-    }
-    if (
-      !(
-        mediaUsahaPenjualanOnline.getEmail() == 0 ||
-        mediaUsahaPenjualanOnline.getEmail() == 1
-      )
-    ) {
-      super.addErrorMessages("Invalid email.");
-    }
-    if (
-      !(
-        mediaUsahaPenjualanOnline.getPesanInstan() == 0 ||
-        mediaUsahaPenjualanOnline.getPesanInstan() == 1
-      )
-    ) {
-      super.addErrorMessages("Invalid pesan instan.");
-    }
-    if (
-      mediaUsahaPenjualanOnline.getPesanInstan() == 1 &&
-      (mediaUsahaPenjualanOnline.getListPesanInstan().size() < 1)
-    ) {
-      super.addErrorMessages("Invalid pilihan pesan instan.");
-    }
-    if (
-      !(
-        mediaUsahaPenjualanOnline.getMediaSosial() == 0 ||
-        mediaUsahaPenjualanOnline.getMediaSosial() == 1
-      )
-    ) {
-      super.addErrorMessages("Invalid media sosial.");
-    }
-    if (
-      mediaUsahaPenjualanOnline.getMediaSosial() == 1 &&
-      (mediaUsahaPenjualanOnline.getListMediaSosial().size() < 1)
-    ) {
-      super.addErrorMessages("Invalid pilihan media sosial.");
-    }
-    if (
-      !(
-        mediaUsahaPenjualanOnline.getMarketplace() == 0 ||
-        mediaUsahaPenjualanOnline.getMarketplace() == 1
-      )
-    ) {
-      super.addErrorMessages("Invalid marketplace.");
-    }
-    if (
-      mediaUsahaPenjualanOnline.getMarketplace() == 1 &&
-      (mediaUsahaPenjualanOnline.getListMarketplace().size() < 1)
-    ) {
-      super.addErrorMessages("Invalid pilihan marketplace.");
+    try {
+      if (
+        !(
+          mediaUsahaPenjualanOnline.getWebsite() == 0 ||
+          mediaUsahaPenjualanOnline.getWebsite() == 1
+        )
+      ) {
+        super.addErrorMessages("Invalid website.");
+      }
+      if (
+        mediaUsahaPenjualanOnline.getWebsite() == 1 &&
+        mediaUsahaPenjualanOnline.getNamaWebsite() == null
+      ) {
+        super.addErrorMessages("Invalid nama website.");
+      }
+      if (
+        !(
+          mediaUsahaPenjualanOnline.getEmail() == 0 ||
+          mediaUsahaPenjualanOnline.getEmail() == 1
+        )
+      ) {
+        super.addErrorMessages("Invalid email.");
+      }
+      if (
+        !(
+          mediaUsahaPenjualanOnline.getPesanInstan() == 0 ||
+          mediaUsahaPenjualanOnline.getPesanInstan() == 1
+        )
+      ) {
+        super.addErrorMessages("Invalid pesan instan.");
+      }
+      if (
+        mediaUsahaPenjualanOnline.getPesanInstan() == 1 &&
+        (mediaUsahaPenjualanOnline.getListPesanInstan().size() < 1)
+      ) {
+        super.addErrorMessages("Invalid pilihan pesan instan.");
+      }
+      if (
+        !(
+          mediaUsahaPenjualanOnline.getMediaSosial() == 0 ||
+          mediaUsahaPenjualanOnline.getMediaSosial() == 1
+        )
+      ) {
+        super.addErrorMessages("Invalid media sosial.");
+      }
+      if (
+        mediaUsahaPenjualanOnline.getMediaSosial() == 1 &&
+        (mediaUsahaPenjualanOnline.getListMediaSosial().size() < 1)
+      ) {
+        super.addErrorMessages("Invalid pilihan media sosial.");
+      }
+      if (
+        !(
+          mediaUsahaPenjualanOnline.getMarketplace() == 0 ||
+          mediaUsahaPenjualanOnline.getMarketplace() == 1
+        )
+      ) {
+        super.addErrorMessages("Invalid marketplace.");
+      }
+      if (
+        mediaUsahaPenjualanOnline.getMarketplace() == 1 &&
+        (mediaUsahaPenjualanOnline.getListMarketplace().size() < 1)
+      ) {
+        super.addErrorMessages("Invalid pilihan marketplace.");
+      }
+    } catch (Exception e) {
+      System.out.println(">> Isian harus diisi semua.");
     }
   }
 
   public void validateBulanPenjualan2020() {
-    for (Integer bln : bulanPenjualan2020.getBulan()) {
-      if (!(bln > 0 && bln < 13)) {
-        super.addErrorMessages("Invalid bulan");
+    try {
+      for (Integer bln : bulanPenjualan2020.getBulan()) {
+        if (!(bln >= 1 && bln <= 12)) {
+          super.addErrorMessages("Invalid bulan");
+        }
       }
+    } catch (Exception e) {
+      System.out.println(">> Isian harus diisi semua.");
     }
   }
 
   public void validatePendapatanSebulan() {
-    if (pendapatanSebulan.getPendapatan() < 0) {
-      super.addErrorMessages("Invalid Pendapatan");
+    try {
+      if (pendapatanSebulan.getPendapatan() < 0) {
+        super.addErrorMessages("Invalid Pendapatan");
+      }
+    } catch (Exception e) {
+      System.out.println(">> Isian harus diisi semua.");
     }
   }
 
   public void validatePersentasePendapatan() {
-    if (
-      !(
-        persentasePendapatan.getOffline() >= 0 &&
-        persentasePendapatan.getOffline() <= 100
-      )
-    ) {
-      super.addErrorMessages("Invalid penjualan offline");
-    }
-    if (
-      !(
-        persentasePendapatan.getMarketplace() >= 0 &&
-        persentasePendapatan.getMarketplace() <= 100
-      )
-    ) {
-      super.addErrorMessages("Invalid penjualan marketplace");
-    }
-    if (
-      !(
-        persentasePendapatan.getNonMarketplace() >= 0 &&
-        persentasePendapatan.getNonMarketplace() <= 100
-      )
-    ) {
-      super.addErrorMessages("Invalid penjualan non marketplace");
-    }
-    if (persentasePendapatan.getTotal() != 100) {
-      super.addErrorMessages("Invalid total persentase");
+    try {
+      if (
+        !(
+          persentasePendapatan.getOffline() >= 0 &&
+          persentasePendapatan.getOffline() <= 100
+        )
+      ) {
+        super.addErrorMessages("Invalid penjualan offline");
+      }
+      if (
+        !(
+          persentasePendapatan.getMarketplace() >= 0 &&
+          persentasePendapatan.getMarketplace() <= 100
+        )
+      ) {
+        super.addErrorMessages("Invalid penjualan marketplace");
+      }
+      if (
+        !(
+          persentasePendapatan.getNonMarketplace() >= 0 &&
+          persentasePendapatan.getNonMarketplace() <= 100
+        )
+      ) {
+        super.addErrorMessages("Invalid penjualan non marketplace");
+      }
+      if (persentasePendapatan.getTotal() != 100) {
+        super.addErrorMessages("Invalid total persentase");
+      }
+    } catch (Exception e) {
+      System.out.println(">> Isian harus diisi semua.");
     }
   }
 
@@ -337,7 +417,7 @@ public class KeteranganUsahaECommerceForm extends Form {
 
   @Override
   public boolean save() {
-    System.out.println("Save here...");
+    System.out.println("  >> Save here...");
     return true;
   }
 
