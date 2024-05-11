@@ -4,6 +4,7 @@
  */
 package latihan.gui;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
  *
  * @author muham
  */
-public class Database {
+public class Database implements Serializable {
     public static Database instance;
     private ArrayList<Mahasiswa> data = new ArrayList<>();
     private Database() {

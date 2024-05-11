@@ -1,43 +1,55 @@
-public class NewFrame extends javax.swing.JDialog {
-private javax.swing.JPanel contentPane;
-private javax.swing.JButton buttonOK;
-private javax.swing.JButton buttonCancel;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
-public NewFrame(){
-setContentPane(contentPane);
-setModal(true);
-getRootPane().setDefaultButton(buttonOK);
+public class NewFrame extends JDialog {
+    private JPanel contentPane;
+    private JTextField fileTextField;
+    private JButton openButton;
+    private JScrollBar scrollBar1;
+    private JTextArea contentTextArea;
+    private JButton buttonOK;
+    private JButton buttonCancel;
+    private JFileChooser fileChooser;
 
-buttonOK.addActionListener(new java.awt.event.ActionListener(){public void actionPerformed(java.awt.event.ActionEvent e){onOK();}});
+    public NewFrame() {
+        setContentPane(contentPane);
+        setModal(true);
+        getRootPane().setDefaultButton(buttonOK);
+        openButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fileChooser = new JFileChooser();
+                JButton button = (JButton)e.getSource();
+                Window window = SwingUtilities.windowForComponent( button );
+                if (fileChooser.showOpenDialog(window) == JFileChooser.APPROVE_OPTION) {
+                    fileTextField.setText(fileChooser.getSelectedFile().toString());
+                    FileInputStream fis = null;
+                    try {
+                        fis = new FileInputStream(fileChooser.getSelectedFile());
+                        String str = "";
+                        while (fis.available() > 0) {
+                            str += (char) fis.read();
+                        }
+                        contentTextArea.setText(str);
+                        fis.close();
+                    } catch (FileNotFoundException ex) {
+                        System.err.println("File tidak ditemukan");
+                    } catch (IOException ex) {
+                        System.err.println("File gagal dibaca");
+                    }
+                }
+            }
+        });
+    }
 
-buttonCancel.addActionListener(new java.awt.event.ActionListener(){public void actionPerformed(java.awt.event.ActionEvent e){onCancel();}});
-
- // call onCancel() when cross is clicked
-setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-addWindowListener(new java.awt.event.WindowAdapter() {
-  public void windowClosing(java.awt.event.WindowEvent e) {
-   onCancel();
-  }
-});
-
- // call onCancel() on ESCAPE
-contentPane.registerKeyboardAction(  new java.awt.event.ActionListener() {    public void actionPerformed(java.awt.event.ActionEvent e) {      onCancel();
-    }  },  javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0),  javax.swing.JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);}
-
-private void onOK(){
- // add your code here
-dispose();
-}
-
-private void onCancel(){
- // add your code here if necessary
-dispose();
-}
-
-public static void main(String[] args){
-NewFrame dialog = new NewFrame();
-dialog.pack();
-dialog.setVisible(true);
-System.exit(0);
-}
+    public static void main(String[] args) {
+        NewFrame dialog = new NewFrame();
+        dialog.pack();
+        dialog.setVisible(true);
+        System.exit(0);
+    }
 }
