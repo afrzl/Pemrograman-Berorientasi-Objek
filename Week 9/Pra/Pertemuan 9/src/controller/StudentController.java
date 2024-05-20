@@ -129,7 +129,7 @@ public class StudentController {
         if (nim.isBlank() || firstName.isBlank() || lastName.isBlank() || asal.isBlank()) {
             err += "Terjadi kesalahan input pada: form isian wajib diisi semua.\n";
         } else {
-            if (nim.length() != 6) {
+            if (!(umur.matches("\\d+")) || nim.length() != 6) {
                 err += "Terjadi kesalahan input pada: NIM harus memiliki panjang 6 digit.\n";
             }
             String name = firstName + lastName;

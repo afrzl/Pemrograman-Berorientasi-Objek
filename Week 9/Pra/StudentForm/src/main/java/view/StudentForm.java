@@ -132,7 +132,6 @@ public class StudentForm extends javax.swing.JFrame {
         student.setUmur((int) umur.getValue());
         student.setAsal((String) asal.getSelectedItem());
         
-        return student;
         
     }//GEN-LAST:event_btnSimpanActionPerformed
 
