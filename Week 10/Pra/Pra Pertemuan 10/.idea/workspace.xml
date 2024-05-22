@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9b8cd2aa-3797-4f18-9ad2-a9cf9f7f5fd2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Praktikum/Latihan GUI/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Praktikum/Latihan GUI/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Week 9/Pra/StudentForm/src/main/java/view/StudentForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Week 9/Pra/StudentForm/src/main/java/view/StudentForm.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;afrzl&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/afrzl/Pemrograman-Berorientasi-Objek.git&quot;,
+    &quot;accountId&quot;: &quot;854aeb42-4186-4c99-b61e-ee401e62cab5&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2gM2zgHFW4rhW0zFZJ5GPRkc9Xl" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Notes.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PengolahKata.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH&quot;: &quot;245&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;341&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;G:/My Drive/00. Tingkat 2/Pemrograman Berorientasi Objek/Week 10/Praktikum/Latihan File&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;G:/My Drive/00. Tingkat 2/Pemrograman Berorientasi Objek/Week 10/Pra/Pra Pertemuan 10/src/Main.java&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\My Drive\00. Tingkat 2\Pemrograman Berorientasi Objek\Week 10\Pra\Pra Pertemuan 10\src" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9b8cd2aa-3797-4f18-9ad2-a9cf9f7f5fd2" name="Changes" comment="" />
+      <created>1715493391337</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715493391337</updated>
+    </task>
+    <servers />
+  </component>
+</project>
